@@ -176,7 +176,7 @@ li {
   display: block;
 }
 
-/****** Media queries
+/****** Media queries for phone
 ***************************/
 
 
@@ -189,6 +189,7 @@ li {
 		height: 4.5rem;
 		width: 4.5rem;
 	}
+
 }
 
 

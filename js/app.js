@@ -82,23 +82,31 @@ function startGame() {
         flippedCard.push($(this));
         if (flippedCard.length === 2) {
             if (flippedCard[0][0].classList[2] === flippedCard[1][0].classList[2]) {
-                flippedCard[0][0].classList.add('match');
-                flippedCard[1][0].classList.add('match');
-                $(flippedCard[0]).off('click');
-                $(flippedCard[1]).off('click');
-                //CompletedCheck & Move update
-                checkCompleted += 1;
-                moves++;
-                refreshOpenedCards();
-                winner();
+                matched();
             } else {
-                setTimeout(removeClasses, 900);
-                setTimeout(refreshOpenedCards, 900);
-                moves++;
+                unmatched();
             }
         }
         updateMoves();
     });
+}
+
+function matched() {
+  flippedCard[0][0].classList.add('match');
+  flippedCard[1][0].classList.add('match');
+  $(flippedCard[0]).off('click');
+  $(flippedCard[1]).off('click');
+  //CompletedCheck & Move update
+  checkCompleted += 1;
+  moves++;
+  refreshOpenedCards();
+  winner();
+}
+
+function unmatched() {
+  setTimeout(removeClasses, 900);
+  setTimeout(refreshOpenedCards, 900);
+  moves++;
 }
 
 function refreshOpenedCards() {
@@ -167,12 +175,12 @@ function winner() {
 }
 
 function getTimerRunning() {
-    let clicks = 0;
+    let startClick = 0;
     $('.card').on('click', function() {
-        clicks += 1;
-        if (clicks === 1) {
+        startClick += 1;
+        if (startClick === 1) {
+          //get timer go on
             var sec = 0;
-
             function time(val) {
                 return val > 9 ? val : '0' + val;
             }
