@@ -16,7 +16,7 @@ setCardsOnDeck();
 startGame();
 // 4. Get timer going on
 getTimerRunning();
-// 5. Restart Game when Necessary
+// 5. Restart Game when Need
 restartGame();
 
 /*
