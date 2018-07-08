@@ -5,7 +5,7 @@ let cards = ['fa-diamond', 'fa-diamond', 'fa-paper-plane-o', 'fa-paper-plane-o',
 let flippedCard = [];
 let moves = 0;
 let checkCompleted = 0;
-let starRating = '5';
+let rateStar = '5';
 let timer = 0;
 
 // 1. Shuffle Card //Going to Shuffle 2 times for better shuffing.
@@ -98,7 +98,7 @@ function startGame() {
             }
         }
         updateMoves();
-    })
+    });
 }
 
 function refreshOpenedCards() {
@@ -119,19 +119,19 @@ function updateMoves() {
     $('.moves').text(moves.toString());
 
     if (moves > 0 && moves < 11) {
-        starRating = '5';
+        rateStar = '5';
     } else if (moves >= 11 && moves <= 15) {
         $('#starOne').removeClass('fa-star');
-        starRating = '4';
+        rateStar = '4';
     } else if (moves >= 16 && moves <= 20) {
         $('#starTwo').removeClass('fa-star');
-        starRating = '3';
+        rateStar = '3';
     } else if (moves >= 21 && moves <= 26) {
         $('#starThree').removeClass('fa-star');
-        starRating = '2';
+        rateStar = '2';
     } else if (moves > 26){
         $('#starFour').removeClass('fa-star');
-        starRating = '1'
+        rateStar = '1'
     }
 }
 
@@ -144,7 +144,7 @@ function winner() {
 
         //Modal Moves and Stars input
         $('#total-moves').text(moves);
-        $('#total-stars').text(starRating);
+        $('#total-stars').text(rateStar);
         //Now Enable Displays Modal
         modal.style.display = 'block';
 
@@ -181,11 +181,12 @@ function getTimerRunning() {
                 $('.minutes').html(time(parseInt(sec / 60, 10)));
             }, 1000);
         }
-    })
+    });
 }
 
 function restartGame() {
     let restart = $('.restart').on('click', function() {
+        //location reload function from w3schools.com
         location.reload()
     });
     return restart;
