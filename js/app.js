@@ -140,10 +140,10 @@ function updateMoves() {
     } else if (moves >= 16 && moves <= 20) {
         $('#starTwo').removeClass('fa-star');
         rateStar = '3';
-    } else if (moves >= 21 && moves <= 26) {
+    } else if (moves >= 21 && moves <= 25) {
         $('#starThree').removeClass('fa-star');
         rateStar = '2';
-    } else if (moves > 26){
+    } else if (moves >= 26){
         $('#starFour').removeClass('fa-star');
         rateStar = '1'
     }
