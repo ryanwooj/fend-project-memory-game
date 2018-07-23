@@ -7,7 +7,7 @@
 * [Contributing](#contributing)
 
 ## Preview
-
+ ![alt text](img/matchingShot.png)
 
 ## Instructions
 
