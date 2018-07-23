@@ -34,7 +34,7 @@ function setCardsOnDeck() {
     })
 }
 
-// Shuffle cards (function from http://stackoverflow.com/a/2450976)
+// Function that Shuffles cards(function from http://stackoverflow.com/a/2450976)
 function shuffle(array) {
     var currentIndex = array.length,
         temporaryValue, randomIndex;
@@ -60,6 +60,7 @@ function shuffle(array) {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
+//function that starts game and basic function if 2 cards flipped are true, return matched or unmatched.
 function startGame() {
 
     $('.card').addClass('open show');
@@ -91,6 +92,7 @@ function startGame() {
     });
 }
 
+//function if cards matched each other.
 function matched() {
   flippedCard[0][0].classList.add('match');
   flippedCard[1][0].classList.add('match');
@@ -103,21 +105,25 @@ function matched() {
   winner();
 }
 
+//function if card does not match
 function unmatched() {
   setTimeout(removeClasses, 900);
   setTimeout(refreshOpenedCards, 900);
   moves++;
 }
 
+//card storage
 function refreshOpenedCards() {
     flippedCard = [];
 }
 
+//function that flips card
 function removeClasses() {
     $('.card').removeClass('show open');
     refreshOpenedCards();
 }
 
+//Counts every move that user clicked on, displays at the end with star rating system.
 function updateMoves() {
     let movement = document.querySelectorAll('.moves');
 
@@ -144,7 +150,7 @@ function updateMoves() {
 }
 
 
-
+// Function that detects if the user won the game. If so, modal modal appears
 function winner() {
     if (checkCompleted === 8) {
         let modal = document.getElementById('newModal');
@@ -164,16 +170,16 @@ function winner() {
             modal.style.display = 'none';
             }
         }
-
-        $('.playButton').on('click', function() {
-            modal.style.display = 'none';
-            restartGame();
-        });
+        restartGame();
+        // $('.playButton').on('click', function() {
+        //     modal.style.display = 'none';
+        //     restartGame();
+        // });
 
         clearInterval(timer);
     }
 }
-
+//Calculates total time user spent on the game. After finishing, he/she can see them
 function getTimerRunning() {
     let startClick = 0;
     $('.card').on('click', function() {
@@ -192,8 +198,9 @@ function getTimerRunning() {
     });
 }
 
+//Enables restart game upon pressing playbutton
 function restartGame() {
-    let restart = $('.restart').on('click', function() {
+    let restart = $('.playButton').on('click', function() {
         //location reload function from w3schools.com
         location.reload()
     });
